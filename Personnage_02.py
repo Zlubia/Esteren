@@ -37,6 +37,57 @@ dictionnaire_metiers = {
     "Varigal" : ["Voyage",["Prouesses", "Milieu Naturel"]],
     }
 
+#Dictionnaires des Traits de Caractères. Séparées en qualité majeure, mineure et défauts majeurs, mineurs
+qualite_majeure = {
+    "Combativité" : ["combatif","optimiste","dynamique","courageux","pugnace"],
+    "Créativité" : ["inventif", "original","débrouillard","drôle","poète"],
+    "Empathie" : ["réceptif", "sensible", "intuitif","extraverti"],
+    "Raison" : ["réfléchi", "ingénieux", "prudent", "logique", "concentré"],
+    "Idéal" : ["droit", "persévérant", "loyal", "incorruptible", "généreux"]             
+    }
+
+qualite_mineure = {
+    "Combativité" : ["calme","flegmatique","paisible","pondéré"],
+    "Créativité" : ["sérieux", "respectueux des traditions ou des règles","discipliné"],
+    "Empathie" : ["contrôle de ses émotions", "peu influençable"],
+    "Raison" : ["spontané", "téméraire"],
+    "Idéal" : ["libre", "indépendant"]             
+    }
+
+defaut_majeur = {
+    "Combativité" : ["impulsif","outrecuidant","fier","buté", "orgueuilleux", "vaniteux"],
+    "Créativité" : ["anticonformiste", "rebelle","indiscipliné","excentrique","menteur"],
+    "Empathie" : ["émotif", "influençable","bavard"],
+    "Raison" : ["abstraction", "replié","précautionneux","hésitant"],
+    "Idéal" : ["rigide", "intolérant", "fanatique", "influençable"]             
+    }
+
+defaut_mineur = {
+    "Combativité" : ["pessimiste","mou","triste","faible de caractère","peureux","mésestime de soi","lâche"],
+    "Créativité" : ["empoté", "esprit étriqué","ascétique" ,"rigide"],
+    "Empathie" : ["austère", "insensible" ,"renfermé", "taciturne", "froid" , "individualiste"],
+    "Raison" : ["distrait", "imprudent","irréfléchi"],
+    "Idéal" : ["capricieux", "inconstant" ,"inconséquent", "immoral","doute", "traître"]  
+    }
+
+
+def print_voies_stats(self) :
+    """
+    Fonction utilitaire pour imprimer les statistiques des voies
+
+    Returns
+    -------
+    None
+
+    """
+    
+    print("Combativité : ", self.voies["Combativité"])
+    print("Créativité : ", self.voies["Créativité"])
+    print("Empathie : ", self.voies["Empathie"])
+    print("Idéal : ", self.voies["Idéal"])
+    print("Raison : ", self.voies["Raison"])
+    
+
 
 def print_domaines_stats(self) :
     #Fonction pour imprimer proprement les stats des domaines et disciplines
@@ -268,7 +319,77 @@ def choix_domaine(domaines_dispo):
     return domaines_dispo, domaine_choisi
 
 
+def choix_voies(self, niveau) :
+    """
+    Fonction utilitaire pour l'input du choix d'une voie
 
+    Parameters
+    ----------
+    niveau : TYPE : Integer
+        DESCRIPTION : La valeur à ajouter à la voie
+
+    Returns
+    -------
+    la liste de voies ajustée.
+
+    """
+    #variable de sortie de boucle
+    choix = False
+    
+    while choix == False :
+        
+        print("\nDans quelle voie souhaitez vous attribuer", niveau, "points ?")
+        
+        voie = input("")
+        
+        if voie == "Combativité" or voie == "combativité" :
+            if self.voies["Combativité"] == 0 :
+                choix = True
+                self.voies["Combativité"] = niveau
+                print("\nVotre niveau de Combativité est à : ", niveau)
+            else :
+                print("Erreur, veuillez choisir une autre voie")
+            
+        elif voie == "Créativité" or voie == "créativité" :
+            if self.voies["Créativité"] == 0 :
+                choix = True
+                self.voies["Créativité"] = niveau
+                print("\nVotre niveau de Créativité est à : ", niveau)
+            else :
+                print("Erreur, veuillez choisir une autre voie")
+            
+        elif voie == "Empathie" or voie == "empathie" :
+            if self.voies["Empathie"] == 0 :
+                choix = True
+                self.voies["Empathie"] = niveau
+                print("\nVotre niveau d'Empathie est à : ", niveau)
+            else :
+                print("Erreur, veuillez choisir une autre voie")
+            
+        elif voie == "Raison" or voie == "raison" :
+            if self.voies["Raison"] == 0 :
+                choix = True
+                self.voies["Raison"] = niveau
+                print("\nVotre niveau de Raison est à : ", niveau)
+            else :
+                print("Erreur, veuillez choisir une autre voie")
+        
+        elif voie == "Idéal" or voie == "idéal" :
+            if self.voies["Idéal"] == 0 :
+                choix = True
+                self.voies["Idéal"] = niveau
+                print("\nVotre niveau d'Idéal est à : ", niveau)
+            else :
+                print("Erreur, veuillez choisir une autre voie")
+            
+        else :
+            print("Erreur, veuillez choisir une voie")
+    
+    return self.voies
+    
+    
+    
+    
 
 class Player:
     """contains everything about a player:
@@ -284,6 +405,7 @@ class Player:
        self.age = 0
        self.peuple = ""
        self.metier = ""
+       self.vigueur = 10
        self.voies = {"Combativité" : 0 ,
                      "Empathie" : 0,
                      "Créativité" : 0,
@@ -815,13 +937,15 @@ class Player:
         
         elif classe_sociale == "Roture" :
             print("\nLa roture forme l'essentiel de la population.")
-            print("Etes-vous paysan, rural, demorthèn, artisan, ouvrier ou bourgeois ?")
-            print("Pensez au métier que vous avez choisi.")
-            roture = input("")
+
         
             choix = False
             
             while choix == False :
+                
+                print("Etes-vous paysan, rural, demorthèn, artisan, ouvrier ou bourgeois ?")
+                print("Pensez au métier que vous avez choisi.")
+                roture = input("")
                 
                 if roture == "paysan" or roture == "Paysan" or roture == "Demorthèn" or roture == "demorthèn"  or roture == "rural" or roture == "Rural" :
                     #créer une liste avec les domaines dispos ()
@@ -861,20 +985,142 @@ class Player:
         """--------------------------------- 3 - LES VOIES -----------------------------------------------------------"""
             
                 
+        print("\n---------------------------------------------------------")
+        print("\nChoisir vos scores de Voies")
+        
+        print("\nLes 5 Voies sont des caractéristiques mentales qui déterminent les traits majeurs de la personnalité")
+        print("du Personnage, sa façon de voir le monde et d'agir.")
+        print("\nVous répartissez au sein des cinq Voies les scores de 1,2,3,4 et 5,")
+        print("ce qui fait que chacune aura un score différent.")
+        print("Les 5 voies possibles sont : ")
+        print("Combativité")
+        print("Créativité")
+        print("Empathie")
+        print("Raison")
+        print("Idéal")
+        
+        
+        #On active la fonction choix_voies pour chaque score.
+        choix_voies(self, 5)
+        choix_voies(self, 4)
+        choix_voies(self, 3)
+        choix_voies(self, 2)
+        choix_voies(self, 1)
+        
+        print("\nVoici le niveau de vos Voies :")
+        print_voies_stats(self)
+        #imprimer les voies proprement.
+        
+        
+        """--------------------------------- 4 - Age, Revers et Histoire -------------------------------------------------"""
             
+                
+        print("\n---------------------------------------------------------")
+        print("\nChoisir votre âge et définir vos Revers.")
+        
+        print("A la création, un Personnage Joueur sera au moins âgé de 16 ans. Cela signifie qu'il a été formé à un métier")
+        print("et qu'il a accompli un service d'ost.")
+        print("Il ne pourra pas avoir plus de 35 ans, car un âge plus avancé serait peu vraisemblable au regard de")
+        print("l'expérience qui lui est octroyée à la création.")
+        print("\nPlus un Personnage Joueur sera âgé, plus il aura appris de choses et plus il sera marqué par la dureté")
+        print("de la vie péninsulaire, ce qui se traduira par un ou plusieurs Revers qui l'auront affecté.")
+        
+        """ 
+        D'abord coder la suite, les jets sur les tableaux de revers peuvent influencer la vigueur, la santé mentale...'               
+        """
 
-
-    
-    
                     
-"""
-On ajoute un point au domaine choisi.
-Cependant il y a une règle supplémentaire qui à de l'importance à partir d'ici :
-A la création, le nombre de disciplines est limité à 2 et leur niveau limité à 6 (5 de base + 1). De plus, les Disciplines
-seront obligatoirement allouées dans les domaines Primaires et Secondaires définis par le choix du métier.
-Si un PJ dépasse 5 dans un autre domaine, il pourra ajouter les points en trop à un autre Domaine au choix, sans dépasser 5.
-Pareil s'il débloque une discipline de trop, ce point sera réparti ailleurs. Voir page 206
-"""
+        """
+        On ajoute un point au domaine choisi.
+        Cependant il y a une règle supplémentaire qui à de l'importance à partir d'ici :
+        A la création, le nombre de disciplines est limité à 2 et leur niveau limité à 6 (5 de base + 1). De plus, les Disciplines
+        seront obligatoirement allouées dans les domaines Primaires et Secondaires définis par le choix du métier.
+        Si un PJ dépasse 5 dans un autre domaine, il pourra ajouter les points en trop à un autre Domaine au choix, sans dépasser 5.
+        Pareil s'il débloque une discipline de trop, ce point sera réparti ailleurs. Voir page 206
+        """
+        
+        
+        """--------------------------------- 5 - Traits de caractère, Santé mentale et Personnalité ----------------------------"""
+            
+                
+        print("\n---------------------------------------------------------")
+        print("\nChoisir vos Traits de caractère")
+        
+        print("\nVous allez choisir 2 traits de caractère, l'un sera une qualité, l'autre un défaut.")
+        print("Ils sont choisis dans une liste qui est déterminée selon les scores de Voies choisis précédemment.")
+        
+        print("\nListe des Qualités disponibles :")
+        
+        if self.voies["Combativité"] == 5 or self.voies["Combativité"] == 4 :
+            #Afficher les valeurs majeurs de combativité
+            print("\nScore Majeur en Combativité : ")
+            for i in qualite_majeure["Combativité"] :
+                print(i)
+            
+        if self.voies["Créativité"] == 5 or self.voies["Créativité"] == 4 :
+            #Afficher les valeurs majeurs de créativité
+            print("\nScore Majeur en Créativité : ")
+            for i in qualite_majeure["Créativité"] :
+                print(i)
+        
+        if self.voies["Empathie"] == 5 or self.voies["Empathie"] == 4 :
+            #Afficher les valeurs majeurs d'empathie
+            print("\nScore Majeur en Empathie : ")
+            for i in qualite_majeure["Empathie"] :
+                print(i)
+                
+        if self.voies["Raison"] == 5 or self.voies["Raison"] == 4 :
+            #Afficher les valeurs majeurs de raison
+            print("\nScore Majeur en Raison : ")
+            for i in qualite_majeure["Raison"] :
+                print(i)
+                
+        if self.voies["Idéal"] == 5 or self.voies["Idéal"] == 4 :
+            #Afficher les valeurs majeurs d'idéal
+            print("\nScore Majeur en Idéal : ")
+            for i in qualite_majeure["Idéal"] :
+                print(i)
+                
+        #On passe aux Scores mineurs
+        
+        if self.voies["Combativité"] == 1 or self.voies["Combativité"] == 2 :
+            #Afficher les valeurs majeurs de combativité
+            print("\nScore Mineur en Combativité : ")
+            for i in qualite_mineure["Combativité"] :
+                print(i)
+            
+        if self.voies["Créativité"] == 1 or self.voies["Créativité"] == 2 :
+            #Afficher les valeurs majeurs de créativité
+            print("\nScore Mineur en Créativité : ")
+            for i in qualite_mineure["Créativité"] :
+                print(i)
+        
+        if self.voies["Empathie"] == 1 or self.voies["Empathie"] == 2 :
+            #Afficher les valeurs majeurs d'empathie
+            print("\nScore Mineur en Empathie : ")
+            for i in qualite_mineure["Empathie"] :
+                print(i)
+                
+        if self.voies["Raison"] == 1 or self.voies["Raison"] == 2 :
+            #Afficher les valeurs majeurs de raison
+            print("\nScore Mineur en Raison : ")
+            for i in qualite_mineure["Raison"] :
+                print(i)
+                
+        if self.voies["Idéal"] == 1 or self.voies["Idéal"] == 2 :
+            #Afficher les valeurs majeurs d'idéal
+            print("\nScore Mineur en Idéal : ")
+            for i in qualite_mineure["Idéal"] :
+                print(i)
+                
+        choix_qualite = input("Choississez une qualité :")
+                
+        
+                
+        
+        
+        
+        
                 
                 
                 
