@@ -1114,6 +1114,85 @@ class Player:
                 print(i)
                 
         choix_qualite = input("Choississez une qualité :")
+        
+        choix_qualite = str(choix_qualite)
+        
+        print("\nVous avez choisi ", choix_qualite, "comme qualité.")
+        
+        print("\nPassons maintenant au choix du défaut.")
+        
+        print("\nListe des Défauts disponibles :")
+        
+        if self.voies["Combativité"] == 5 or self.voies["Combativité"] == 4 :
+            #Afficher les valeurs majeurs de combativité
+            print("\nScore Majeur en Combativité : ")
+            for i in defaut_majeur["Combativité"] :
+                print(i)
+                
+        if self.voies["Créativité"] == 5 or self.voies["Créativité"] == 4 :
+            #Afficher les valeurs majeurs de créativité
+            print("\nScore Majeur en Créativité : ")
+            for i in defaut_majeur["Créativité"] :
+                print(i)
+        
+        if self.voies["Empathie"] == 5 or self.voies["Empathie"] == 4 :
+            #Afficher les valeurs majeurs d'empathie
+            print("\nScore Majeur en Empathie : ")
+            for i in defaut_majeur["Empathie"] :
+                print(i)
+                
+        if self.voies["Raison"] == 5 or self.voies["Raison"] == 4 :
+            #Afficher les valeurs majeurs de raison
+            print("\nScore Majeur en Raison : ")
+            for i in defaut_majeur["Raison"] :
+                print(i)
+                
+        if self.voies["Idéal"] == 5 or self.voies["Idéal"] == 4 :
+            #Afficher les valeurs majeurs d'idéal
+            print("\nScore Majeur en Idéal : ")
+            for i in defaut_majeur["Idéal"] :
+                print(i)
+                
+        #On passe aux Scores mineurs
+        
+        if self.voies["Combativité"] == 1 or self.voies["Combativité"] == 2 :
+            #Afficher les valeurs majeurs de combativité
+            print("\nScore Mineur en Combativité : ")
+            for i in defaut_mineur["Combativité"] :
+                print(i)
+            
+        if self.voies["Créativité"] == 1 or self.voies["Créativité"] == 2 :
+            #Afficher les valeurs majeurs de créativité
+            print("\nScore Mineur en Créativité : ")
+            for i in defaut_mineur["Créativité"] :
+                print(i)
+        
+        if self.voies["Empathie"] == 1 or self.voies["Empathie"] == 2 :
+            #Afficher les valeurs majeurs d'empathie
+            print("\nScore Mineur en Empathie : ")
+            for i in defaut_mineur["Empathie"] :
+                print(i)
+                
+        if self.voies["Raison"] == 1 or self.voies["Raison"] == 2 :
+            #Afficher les valeurs majeurs de raison
+            print("\nScore Mineur en Raison : ")
+            for i in defaut_mineur["Raison"] :
+                print(i)
+                
+        if self.voies["Idéal"] == 1 or self.voies["Idéal"] == 2 :
+            #Afficher les valeurs majeurs d'idéal
+            print("\nScore Mineur en Idéal : ")
+            for i in defaut_mineur["Idéal"] :
+                print(i)
+                
+        choix_defaut = input("Choississez un défaut :")
+        
+        choix_defaut = str(choix_defaut)
+        
+        print("\nVous avez choisi ", choix_defaut, "comme défaut.")
+
+        
+        
                 
         
                 
