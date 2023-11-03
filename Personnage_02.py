@@ -598,6 +598,10 @@ class Player:
                       "Navigation" : 0,
                       "Orientation" : 0
                       }
+       
+       self.conscience = 0
+       self.instinct = 0
+       self.trauma = 0
                          
     
     
@@ -1190,6 +1194,31 @@ class Player:
         choix_defaut = str(choix_defaut)
         
         print("\nVous avez choisi ", choix_defaut, "comme défaut.")
+        
+        
+        """------------------------------- Santé mentale et personalité-------------------"""
+        
+        print("\n---------------------------------------------------------")
+        print("\nLes Aspects représentent les différentes facettes de la personnalité du PJ")
+        print("\nConscience")
+        print("\nCet Aspect rend compte de l'importance de la rationalité pour le PJ, de son ancrage dans la réalité,")
+        print("de sa capacité de logique et de réflexion, et de sa solidité.")
+        
+        self.conscience = self.voies["Raison"] + self.voies["Idéal"]
+        
+        print("\nVotre Conscience est de :" + self.conscience)
+        
+        print("\nInstinct")
+        print("\nL'Instinct concerne toute l'énergie pulsionnelle d'un être vivant. Cet Aspect regroupe notamment les")
+        print("instincts de survie et d'autoconservation ainsi que tout ce qui a trait à la sexualité.")
+        
+        self.instinct = self.voies["Combativité"] + self.voies["Créativité"]
+        
+        print("\nVotre Instinct est de :" + self.instinct)
+        
+
+        
+        
 
         
         
