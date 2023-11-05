@@ -5,70 +5,9 @@ Created on Tue Aug 22 14:48:34 2023
 @author: Pierrick
 """
 
-#Dictionnaire contenant les métiers. Et sous chaque metier il y a 2 listes, la première
-#pour le domaine primaire et la 2ème pour le domaine secondaire
+from Donnees_Creation_Perso import *
 
-liste_domaines = ["Artisanat", "Combat au Contact", "Discrétion", "Érudition", "Magience", "Milieu Naturel",
-                 "Mystères Demorthèn", "Occultisme", "Perception", "Prière", "Prouesses", "Relation", "Représentation",
-                 "Science", "Tir et Lancer", "Voyage"]
 
-dictionnaire_metiers = {
-    "Artisan" : ["Artisanat",["Relation", "Science"]],
-    "Barde" : ["Représentation",["Relation","Voyage"]],
-    "Chasseur" : ["Milieu Naturel",["Combat au Contact","Tir et Lancer"]],
-    "Chevalier" : ["Combat au Contact",["Voyage","Relation"]],
-    "Combattant" : ["Combat au Contact",["Tir et Lancer","Prouesses"]],
-    "Commerçant" : ["Relation",["Érudition", "Artisanat"]],
-    "Demorthèn" : ["Mystères Demorthèn",["Érudition", "Milieu Naturel"]],
-    "Érudit" : ["Érudition",["Science", "Occultisme"]],
-    "Espion" : ["Perception",["Artisanat", "Combat au Contact", "Discrétion", "Érudition", "Magience", "Milieu Naturel",
-                     "Mystères Demorthèn", "Occultisme", "Prière", "Prouesses", "Relation", "Représentation",
-                     "Science", "Tir et Lancer", "Voyage"]],
-    "Explorateur" : ["Prouesses",["Milieu Naturel", "Voyage"]],
-    "Investigateur" : ["Perception",["Artisanat", "Combat au Contact", "Discrétion", "Érudition", "Magience", "Milieu Naturel",
-                     "Mystères Demorthèn", "Occultisme", "Prière", "Prouesses", "Relation", "Représentation",
-                     "Science", "Tir et Lancer", "Voyage"]],
-    "Magientiste" : ["Magience",["Érudition", "Science"]],
-    "Malandrin" : ["Discrétion",["Prouesses", "Représentation"]],
-    "Médecin" : ["Science",["Érudition", "Relation"]],
-    "Occultiste" : ["Occultisme",["Érudition", "Science"]],
-    "Paysan" : ["Milieu Naturel",["Artisanat", "Prouesses"]],
-    "Religieux du Temple" : ["Prière",["Érudition", "Artisanat", "Relation", "Combat au Contact", "Voyage"]],
-    "Varigal" : ["Voyage",["Prouesses", "Milieu Naturel"]],
-    }
-
-#Dictionnaires des Traits de Caractères. Séparées en qualité majeure, mineure et défauts majeurs, mineurs
-qualite_majeure = {
-    "Combativité" : ["combatif","optimiste","dynamique","courageux","pugnace"],
-    "Créativité" : ["inventif", "original","débrouillard","drôle","poète"],
-    "Empathie" : ["réceptif", "sensible", "intuitif","extraverti"],
-    "Raison" : ["réfléchi", "ingénieux", "prudent", "logique", "concentré"],
-    "Idéal" : ["droit", "persévérant", "loyal", "incorruptible", "généreux"]             
-    }
-
-qualite_mineure = {
-    "Combativité" : ["calme","flegmatique","paisible","pondéré"],
-    "Créativité" : ["sérieux", "respectueux des traditions ou des règles","discipliné"],
-    "Empathie" : ["contrôle de ses émotions", "peu influençable"],
-    "Raison" : ["spontané", "téméraire"],
-    "Idéal" : ["libre", "indépendant"]             
-    }
-
-defaut_majeur = {
-    "Combativité" : ["impulsif","outrecuidant","fier","buté", "orgueuilleux", "vaniteux"],
-    "Créativité" : ["anticonformiste", "rebelle","indiscipliné","excentrique","menteur"],
-    "Empathie" : ["émotif", "influençable","bavard"],
-    "Raison" : ["abstraction", "replié","précautionneux","hésitant"],
-    "Idéal" : ["rigide", "intolérant", "fanatique", "influençable"]             
-    }
-
-defaut_mineur = {
-    "Combativité" : ["pessimiste","mou","triste","faible de caractère","peureux","mésestime de soi","lâche"],
-    "Créativité" : ["empoté", "esprit étriqué","ascétique" ,"rigide"],
-    "Empathie" : ["austère", "insensible" ,"renfermé", "taciturne", "froid" , "individualiste"],
-    "Raison" : ["distrait", "imprudent","irréfléchi"],
-    "Idéal" : ["capricieux", "inconstant" ,"inconséquent", "immoral","doute", "traître"]  
-    }
 
 
 def print_voies_stats(self) :
@@ -412,25 +351,7 @@ class Player:
                      "Raison" : 0,
                      "Idéal" : 0}
        self.avantages = []
-       self.desavantages = []
-       """self.domaines = {"Artisanat" : 0 ,
-                        "Combat au Contact" : 0,
-                        "Discrétion" : 0,
-                        "Érudition" : 0,
-                        "Magience" : 0,
-                        "Milieu Naturel" : 0,
-                        "Mystères Demorthèn" : 0,
-                        "Occultisme" : 0,
-                        "Perception" : 0,
-                        "Prière" : 0,
-                        "Prouesses" : 0,
-                        "Relation" : 0,
-                        "Représentation" : 0,
-                        "Science" : 0,
-                        "Tir et Lancer" : 0,
-                        "Voyage" : 0}
-        """
-       
+       self.desavantages = []     
        
        self.artisanat = {"Artisanat" : 0,
                          "Bijouterie" : 0,
@@ -601,7 +522,10 @@ class Player:
        
        self.conscience = 0
        self.instinct = 0
-       self.trauma = 0
+       self.orientation = ""
+       self.trauma = (0, 0) #(Points de Trauma Permanents , Points de Trauma Temporaires)
+       self.endurcissement = 0
+       self.resistance_mentale = 0
                          
     
     
@@ -997,7 +921,7 @@ class Player:
         print("\nVous répartissez au sein des cinq Voies les scores de 1,2,3,4 et 5,")
         print("ce qui fait que chacune aura un score différent.")
         print("Les 5 voies possibles sont : ")
-        print("Combativité")
+        print("\nCombativité")
         print("Créativité")
         print("Empathie")
         print("Raison")
@@ -1022,7 +946,7 @@ class Player:
         print("\n---------------------------------------------------------")
         print("\nChoisir votre âge et définir vos Revers.")
         
-        print("A la création, un Personnage Joueur sera au moins âgé de 16 ans. Cela signifie qu'il a été formé à un métier")
+        print("\nA la création, un Personnage Joueur sera au moins âgé de 16 ans. Cela signifie qu'il a été formé à un métier")
         print("et qu'il a accompli un service d'ost.")
         print("Il ne pourra pas avoir plus de 35 ans, car un âge plus avancé serait peu vraisemblable au regard de")
         print("l'expérience qui lui est octroyée à la création.")
@@ -1058,62 +982,67 @@ class Player:
         if self.voies["Combativité"] == 5 or self.voies["Combativité"] == 4 :
             #Afficher les valeurs majeurs de combativité
             print("\nScore Majeur en Combativité : ")
+            print(" ")
             for i in qualite_majeure["Combativité"] :
                 print(i)
             
         if self.voies["Créativité"] == 5 or self.voies["Créativité"] == 4 :
             #Afficher les valeurs majeurs de créativité
             print("\nScore Majeur en Créativité : ")
+            print(" ")
             for i in qualite_majeure["Créativité"] :
                 print(i)
         
         if self.voies["Empathie"] == 5 or self.voies["Empathie"] == 4 :
             #Afficher les valeurs majeurs d'empathie
             print("\nScore Majeur en Empathie : ")
+            print(" ")
             for i in qualite_majeure["Empathie"] :
                 print(i)
                 
         if self.voies["Raison"] == 5 or self.voies["Raison"] == 4 :
             #Afficher les valeurs majeurs de raison
             print("\nScore Majeur en Raison : ")
+            print(" ")
             for i in qualite_majeure["Raison"] :
                 print(i)
                 
         if self.voies["Idéal"] == 5 or self.voies["Idéal"] == 4 :
             #Afficher les valeurs majeurs d'idéal
             print("\nScore Majeur en Idéal : ")
+            print(" ")
             for i in qualite_majeure["Idéal"] :
                 print(i)
                 
         #On passe aux Scores mineurs
         
         if self.voies["Combativité"] == 1 or self.voies["Combativité"] == 2 :
-            #Afficher les valeurs majeurs de combativité
             print("\nScore Mineur en Combativité : ")
+            print(" ")
             for i in qualite_mineure["Combativité"] :
                 print(i)
             
         if self.voies["Créativité"] == 1 or self.voies["Créativité"] == 2 :
-            #Afficher les valeurs majeurs de créativité
             print("\nScore Mineur en Créativité : ")
+            print(" ")
             for i in qualite_mineure["Créativité"] :
                 print(i)
         
         if self.voies["Empathie"] == 1 or self.voies["Empathie"] == 2 :
-            #Afficher les valeurs majeurs d'empathie
             print("\nScore Mineur en Empathie : ")
+            print(" ")
             for i in qualite_mineure["Empathie"] :
                 print(i)
                 
         if self.voies["Raison"] == 1 or self.voies["Raison"] == 2 :
-            #Afficher les valeurs majeurs de raison
             print("\nScore Mineur en Raison : ")
+            print(" ")
             for i in qualite_mineure["Raison"] :
                 print(i)
                 
         if self.voies["Idéal"] == 1 or self.voies["Idéal"] == 2 :
-            #Afficher les valeurs majeurs d'idéal
             print("\nScore Mineur en Idéal : ")
+            print(" ")
             for i in qualite_mineure["Idéal"] :
                 print(i)
                 
@@ -1122,6 +1051,8 @@ class Player:
         choix_qualite = str(choix_qualite)
         
         print("\nVous avez choisi ", choix_qualite, "comme qualité.")
+        
+        print("\n\n---Défaut---")
         
         print("\nPassons maintenant au choix du défaut.")
         
@@ -1200,21 +1131,79 @@ class Player:
         
         print("\n---------------------------------------------------------")
         print("\nLes Aspects représentent les différentes facettes de la personnalité du PJ")
-        print("\nConscience")
+        print("\n----Conscience----")
         print("\nCet Aspect rend compte de l'importance de la rationalité pour le PJ, de son ancrage dans la réalité,")
         print("de sa capacité de logique et de réflexion, et de sa solidité.")
         
         self.conscience = self.voies["Raison"] + self.voies["Idéal"]
         
-        print("\nVotre Conscience est de :" + self.conscience)
+        print("\nVotre Conscience est de :" + str(self.conscience))
         
-        print("\nInstinct")
+        print("\n----Instinct----")
         print("\nL'Instinct concerne toute l'énergie pulsionnelle d'un être vivant. Cet Aspect regroupe notamment les")
         print("instincts de survie et d'autoconservation ainsi que tout ce qui a trait à la sexualité.")
         
         self.instinct = self.voies["Combativité"] + self.voies["Créativité"]
         
-        print("\nVotre Instinct est de :" + self.instinct)
+        print("\nVotre Instinct est de :" + str(self.instinct))
+        
+        if self.instinct > self.conscience :
+            
+            self.orientation = "Instinctive"
+            print("\nL'orientation de votre personnalité est Instinctive.")
+            
+            self.trauma = (self.instinct - self.conscience, 0)
+            
+            print("L'écart entre votre instinct et votre conscience est de", self.trauma[0])
+            print("Ceci signifie que vous souffrez de ", self.trauma[0], "points de Trauma permanents.")
+        
+        elif self.conscience > self.instinct :
+            
+            self.orientation = "Rationnelle"
+            print("\nL'orientation de votre personnalité est Rationnelle.")
+            
+            self.trauma = (self.conscience - self.instinct, 0)
+            
+            print("L'écart entre votre instinct et votre conscience est de", self.trauma[0])
+            print("Ceci signifie que vous souffrez de ", self.trauma[0], "points de Trauma permanents.")
+        
+        else :
+            print("\nVous avez une santé mentale équilibrée.")
+            
+            choix = False
+            
+            while choix == False :
+                print("Vous pouvez choisir si votre orientation de la personnalité est plutôt Instinctive ou Rationnelle")
+                
+                orientation = input("Quel est votre choix ?")
+                
+                if orientation == "Rationnelle" or orientation == "rationnelle" :
+                    
+                    self.orientation = "Rationnelle"
+                    print("\nL'orientation de votre personnalité est Rationnelle.")
+                    choix = True
+                
+                elif orientation == "Instinctive" or orientation == "instinctive" :
+                    
+                    self.orientation = "Instinctive"
+                    print("\nL'orientation de votre personnalité est Instinctive.")
+                    choix = True
+                
+                else :
+                    print("Erreur, veuillez choisir votre orientation.")
+                    
+        print("\n----Résistance Mentale----")
+        
+        print("\nDurant ses aventure le PJ sera amené à voir ou comprendre des choses indicibles.")
+        print("A chaque fois que cela se produit, il y a une chance que l'état de sa Santé Mentale se dégrade.")
+        
+        self.resistance_mentale = self.voies["Idéal"] + 5
+        
+        print("\nVotre Résistance Mentale est de", self.resistance_mentale)
+        
+        "--------------choix de désordre mental-----------------------"
+                
+        
         
 
         
