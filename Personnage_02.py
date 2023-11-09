@@ -9,7 +9,6 @@ from Donnees_Creation_Perso import *
 
 
 
-
 def print_voies_stats(self) :
     """
     Fonction utilitaire pour imprimer les statistiques des voies
