@@ -198,5 +198,155 @@ mimétisme = Desordre_mental(
     }, 
     "Empathie", 
     "Créativité")
+          
+          
+obsession = Desordre_mental(
+    "Obsession", 
+    "Raison", 
+    "Créativité", 
+    
+    """Le sujet pense trop et ses réflexions peuvent s'enliser rapidement et tourner à l'obsession. Il manque de plus en plus de 
+    créativité à mesure que son champ de pensée se focalise sur son obsession.""", 
+    
+    {"Idée obsédante" : 
+     """Le sujet a tendance à se focaliser sur un thème ou une idée fixe, ce qui peut l'entraver dans ses autres activités. Il 
+     peut devenir anxieux s'il n'a pas l'occasion de respecter les actions appropriées (rituel religieux, vérification, etc).
+     Le sujet obsessionnel a tendance à être méticuleux (maniaque) et assez froid dans ses relations avec les autres."""
+    },
+    
+    {"Obsession" :
+     """En plus de penser tout le temps à son thème de prédilection, le sujet a tendance à se sentir angoissé. Il développe de 
+     nouveaux rituels, qu'il doit executer sous peine de se sentir envahi par l'angoisse (par exemple : vérifier son équipement
+     en sortant d'un lieu, faire une prière après une certaine action, compter ses daols, etc.).""",
+     "Crise" : """Sentiment d'oppression violente nécessitant l'exécution du même rituel à plusieurs reprises, en lien avec
+     son sujet de prédilection""",
+     "Aptitude" : 
+         ("Jets concernant son obsession", 2, """Le sujet obtient un bonus de +2 à chaque jet concernant son obsession""")
+    },
+  
+    {"Ritualisation" : 
+     """Chaque action ou pensée du sujet est contaminée par son obsession. Une culpabilité diffuse et écrasante l'envahit s'il ne 
+     se consacre pas totalement à son thème privilégié. Menacé par l'angoisse, il peut connaître de graves moments de tristesse
+     et de mal-être.""",
+     "Crise" : "Usage de tous les moyens pour arriver à ses fins, avec recours à la violence si nécessaire.",
+     "Aptitude" : 
+         ("Jets concernant son obsession", 4, """Le sujet obtient un bonus de +4 à chaque jet concernant son obsession""")
+    }, 
+    "Raison", 
+    "Créativité")
+                                                                                          
+
+mysticisme = Desordre_mental(
+    "Mysticisme", 
+    ("Idéal","Empathie"), 
+    None, 
+    
+    """Les croyances, qui peuvent être de toute nature, risquent de prendre une place de plus en plus importante dans la vie 
+    du sujet au point de le faire sombrer dans des délires mystiques.""", 
+    
+    {"Mysticisme" : 
+     """Sur un premier versant, les convictions du sujet se durcissent au point qu’il devient obsédé par la bonne observance des
+     rites propres à ses croyances. Sur un autre versant, il apparaît continuellement à l’écoute des “signes” de son environnement,
+     plongé dans un état méditatif. Il peut apparaître comme un mystique, voire un marginal aux yeux des autres."""
+    },
+    
+    {"Fanatisme" :
+     """Le discours et les pensées du sujet sont principalement tournés vers ses croyances. Il supporte de moins en moins les 
+     remises en question de ses convictions et réagit de manière imprévisible vis à vis de ceux qui ne les partagent pas.""",
+     "Crise" : """moment mystique pendant lequel le sujet semble tantôt coupé du reste du monde, absorbé dans ses pensées, 
+     tantôt exalté.""",
+     "Aptitude" : 
+         ("Score d'exaltation ou de Rindath", 5, """Le sujet obtient +5 à son score maximal d'Exaltation ou de Rindath.""")
+    },
+  
+    {"Délire Mystique" : 
+     """Le sujet se pense en contact direct avec des entités supérieures ou est persuadé d’être investi d’une mission spéciale 
+     qu’il doit accomplir coûte que coûte. Ses convictions deviennent pratiquement impossibles à remettre en question. Il peut
+     prendre des risques inconsidérés, devenir violent ou encore entamer un voyage dangereux dans un but mystique improbable.""",
+     "Crise" : "persuasion d’être témoin d’un 'signe' donnant des moments intenses d’exaltation et l’abandon de l’action en cours.",
+     "Aptitude" : 
+         ("Score d'exaltation ou de Rindath", 15, """Le sujet obtient +15 à son score maximal d'Exaltation ou de Rindath.""")
+    }, 
+    ("Idéal", "Empathie"), 
+    "Raison")
+    
+
+frénésie = Desordre_mental(
+    "Frénésie", 
+    "Combativité", 
+    None, 
+    
+    """Agressif et téméraire, le frénétique a tendance à réaliser des actes violents et impulsifs sans éprouver ni remords, ni
+    culpabilité.""", 
+    
+    {"Agressivité" : 
+     """Le sujet devient irritable et agressif pour un rien. Il a tendance à essayer de contrôler et de dominer les autres."""
+    },
+    
+    {"Impulsivité" :
+     """D’humeur instable, la combativité du sujet se traduit le plus souvent par la violence et l’agressivité. Il est perçu 
+     comme tyrannique et d’humeur lunatique.""",
+     "Crise" : """acte violent, non respect de l’ordre établi ou prise soudaine d’un risque inconsidéré.""",
+     "Aptitude" : 
+         ("Survie", 1, """Le nombre maximal de points de Survie augmente d'un point.""")
+    },
+  
+    {"Fureur" : 
+     """Le sujet est en permanence sous tension et réagit de manière violente à pratiquement toutes les situations. Parallèlement,
+     les processus de pensée sont très affaiblis et la capacité à éprouver des émotions émoussée.""",
+     "Crise" : "furie destructrice pouvant facilement aller jusqu’au meurtre.",
+     "Aptitude" : 
+         ("Survie", 2, """Le nombre maximal de points de Survie augmente de 2 points.""")
+    }, 
+    "Combativité", 
+    "Raison")
+    
+
+hallucination = Desordre_mental(
+    "Hallucination", 
+    "Créativité", 
+    "Empathie", 
+    
+    """Dépassé par son imaginaire foisonnant et envahissant sa réalité, le sujet croit percevoir des choses qui n’ont pourtant 
+    aucune existence concrète. Les hallucinations peuvent concerner les cinq sens mais l’audition est privilégiée. Le vécu
+    hallucinatoire peut être sur un versant mystique ou persécutif. Dans ce dernier cas, il est lié à des scènes ou souvenirs
+    traumatisants revenant hanter le sujet.""", 
+    
+    {"Illusion" : 
+     """Le sujet a l’impression que ses sens lui jouent des tours. Une ombre au coin de la ruelle ou dans un bosquet, 
+     un chuchotement dans les allées sombres d’une cité..."""
+    },
+    
+    {"Fausses perceptions" :
+     """Assailli par des perceptions qu’il ressent comme étranges, le sujet commence à construire une théorie autour d’un thème
+     précis. Il ne s’agit généralement pas d’hallucinations directes mais plutôt de symptômes d’illusion marqués, accompagnés 
+     d’un sentiment diffus de mysticisme ou d’angoisse.""",
+     "Crise" : """hallucinations directes mettant en jeu l’un des cinq sens. Persuasion de la réalité des visions ou des
+     ressentis.""",
+     "Aptitude" : 
+         ("Score d'exaltation ou de Rindath", 5, """Le sujet obtient +15 à son score maximal d'Exaltation ou de Rindath.
+          sur le versant mystique""",
+          "Jets de vigilance", 3, """Le sujet est attentif à tout 'signe extérieur'. Il sera très difficilement surpris.
+           sur le versant persécutif""")
+    },
+  
+    {"Hallucination" : 
+     """Le sujet est harcelé par ses hallucinations qui prennent clairement une dimension mystique ou une dimension paranoïaque.
+     Son rapport au monde est profondément distordu car pratiquement toutes ses interactions sont contaminées par des éléments
+     hallucinatoires qu’il croit réels.""",
+     "Crise" : """coupure totale avec le monde extérieur, Visions et sensations qui envahissent totalement le sujet. Mise en grand
+     danger sans s’en rendre compte.""",
+     "Aptitude" : 
+         ("Score d'exaltation ou de Rindath", 15, """Le sujet obtient +15 à son score maximal d'Exaltation ou de Rindath.
+          sur le versant mystique""",
+          "Jets de vigilance", 20, """Le sujet est attentif à tout 'signe extérieur'. Il ne peut être surpris.
+           sur le versant persécutif""")
+    }, 
+    "Créativité", 
+    "Raison")
+        
+
+                                                                                          
+       
 
 
