@@ -344,8 +344,208 @@ hallucination = Desordre_mental(
     }, 
     "Créativité", 
     "Raison")
-        
+          
 
+          
+hystérie = Desordre_mental(
+    "Hystérie", 
+    "Empathie", 
+    None, 
+    
+    """Plutôt désinhibé et à l’aise en société, le sujet (en majorité féminin) hystérique est très expressif et très sensible à
+    l’attention qu’on lui porte. La part de séduction dans ses relations quotidiennes est forte. D’une nature plutôt capricieuse
+    et d’humeur changeante, passant rapidement du rire aux larmes, l’hystérique se démarque par son immaturité et sa tendance à
+    dramatiser.""", 
+    
+    {"Agitation" : 
+     """Le sujet est très sensible, pouvant passer d’une émotion à l’autre en quelques instants. Ses caprices s’accentuent autant
+     que sa propension à dramatiser et à théâtraliser le moindre événement de la vie quotidienne, ce qui le rend très difficilement
+     supportable."""
+    },
+    
+    {"Hystérie" :
+     """Le sujet vit dans une agitation émotionnelle pratiquement permanente, sensible à tout ce qui peut se dérouler autour de lui
+     et réagissant toujours à l’excès.""",
+     "Crise" : """agitation devenant une crise de nerfs violente. Phase de dépression. Plus rarement, déchaînement épileptique aussi
+     violent que soudain.""",
+     "Aptitude" : 
+         ("Jet de relation", 0, """Le sujet aura une capacité accrue à séduire ses interlocuteurs. En cas de réussite sur un jet
+          de Relation, le résultat sera toujours meilleur que ce qu'il aurait dû être : des soldats bourrus deviennent aimables,
+          un convive aimable sera charmé, etc...""")
+    },
+  
+    {"Erotomanie" : 
+     """Le sujet se croit amoureux d’une personne. Cet amour délirant à sens unique peut déboucher sur des actes fous tel que le
+     harcèlement continuel, la séduction outrancière et l’intrusion progressive dans sa vie privée. Lorsque le sujet se rend compte
+     que ses tentatives sont vaines, il peut vivre de grands moments de tristesse pouvant aller jusqu’à l’aggression.""",
+     "Crise" : """amour fou d’une personne et persuasion d’être aimé en retour.""",
+     "Aptitude" : 
+         ("Jet de Relation", 0, """Le sujet aura une capacité à littéralement ensorceler ses interlocuteurs sur un jet de Relation
+          réussi. Charmées, les cibles auront tencande à tout faire pour être aimable, aider, etc. en revanche, un échec sur un jet
+          de Relation aura des effets dévastateurs : les interlocuteurs trouveront le sujet insupportale et auront tendance à
+          éprouver de l'aressivité à son égard. Notez qu'un interlocuteur précédemment charmé pout voir son humeur se renverser et
+          inversement.""")
+    }, 
+    "Empathie", 
+    "Idéal")
+          
+
+
+confusion_mentale = Desordre_mental(
+    "Confusion Mentale", 
+    "Créativité", 
+    "Raison", 
+    
+    """Ce trouble perturbe gravement les fonctions mentales et enraye le travail de la pensée à mesure que le sujet s’enfonce 
+    dans un univers intérieur étrange et fantasmagorique.""", 
+    
+    {"Étourderie" : 
+     """Le sujet est atteint de troubles de l’attention. Il a tendance à avoir du mal à rester concentré, oublie souvent ce qu’on 
+     lui a dit plus tôt et peut montrer des troubles du sommeil. Il se montre lunatique, tantôt méditatif, tantôt très expansif."""
+    },
+    
+    {"Confusion" :
+     """En plus de montrer des signes de plus en plus inquiétants d’inattention, de troubles de la mémoire et du sommeil, le sujet
+     subit une désorientation spatio-temporelle doublée d’une désorganisation de la pensée pouvant se traduire par des propos
+     incompréhensibles. S’il est artiste ou de nature créative, il apparaît excentrique et doté d’une imagination débordante.""",
+     "Crise" : """incapacité du sujet à suivre ce qui se passe autour de lui. Confusion et absorbsion dans son monde onirique.
+     Prostration ou au contraire exaltation.""",
+     "Aptitude" : 
+         ("Compétence artistique", 2, """Le sujet n'a besoin de dormir que 6 heures par nuit et a +2 à toutes compétence
+          artistique.""")
+    },
+  
+    {"État crépusculaire" : 
+     """Le plus souvent perdu dans un syndrome confusionnel grave, le sujet finit par sombrer dans un état où ses troubles de la
+     pensée vont provoquer des mauvaises interprétations de la réalité. De plus, il a tendance à vivre la nuit.""",
+     "Crise" : """production d’images visuelles parfois effrayantes qui surgissent dans la conscience alors que le sujet apparaît
+     somnolent et incapable de penser dans la réalité.""",
+     "Aptitude" : 
+         ("Compétence artistique", 4, """Le sujet ne dort que 3 heures par nuit et obtient un bonus supplémentaire de +2 à toute 
+          compétence artistique, puisant l'inspiration dans ses visions.""")
+    }, 
+    "Créativité", 
+    "Raison")
+          
+
+         
+exaltation = Desordre_mental(
+    "Exaltation", 
+    "Combativité", 
+    "Idéal", 
+    
+    """Désinhibé, le sujet se sent en pleine forme, capable de tout, et exprime ses idées de grandeur sans aucune retenue. Il peut
+    devenir impulsif et irritable tout en se dispersant dans ses projets.""", 
+    
+    {"Trouble de l'humeur" : 
+     """Le sujet se montre avenant et désinhibé, il est excité, parle vite et fait preuve d’un enthousiasme pouvant paraître exagéré.
+     Un rien peut le contrarier, l’irriter, voire le mettre en colère."""
+    },
+    
+    {"Exaltation" :
+     """Perdant la notion des convenances sociales, l’exalté se montre très extraverti, négligeant son langage et sa tenue dans des
+     circonstances inadaptées. Un langage très familier avec un haut dignitaire peut sans doute mettre tout le monde mal à l’aise…
+     Hyperactif, le sujet a aussi toutes sortes de projets et d’idées. Il change souvent d’avis, se montrant impatient et
+     irritable.""",
+     "Crise" : """mise en danger en concrétisant l’un de ses projets de manière impulsive et irraisonnée. Violente colère si entravé
+     ou contrarié.""",
+     "Aptitude" : 
+         ("Prouesses", 2, """Le sujet obtient +2 à chaque jet de Prouesses.""")
+    },
+  
+    {"Mégalomanie" : 
+     """Le sujet se pense réellement capable de tout. Il fait de grands projets qui sembleront irréalistes ou délirants à ses
+     compagnons. Passant d’une familiarité exubérante avec un étranger à une colère injustifiée, l’humeur du sujet pose de gros
+     problèmes au quotidien. Il a également tendance à réaliser des achats compulsifs, pouvant même lourdement s’endetter.""",
+     "Crise" : """mise en acte de l’un des projets délirants ou colère pouvant devenir violente et meurtrière.""",
+     "Aptitude" : 
+         ("Prouesses", 4, """Le sujet obtient +2 supplémentaire à chaque jet de Prouesses.""")
+    }, 
+    "Combativité", 
+    "Idéal")          
+
+          
+phobie = Desordre_mental(
+    "Phobie", 
+    None, 
+    None, 
+    
+    """Une personnalité phobique est la conséquence de craintes irrationnelles ou de traumatismes réels. Tout d’abord peur vivace
+    d’une chose ou d’une situation en particulier, la phobie peut devenir grave au point d’empêcher le sujet de vivre
+    correctement.""", 
+    
+    {"Peur" : 
+     """Le sujet répugne à se trouver en présence de son objet phobique ou dans une situation pouvant provoquer l’angoisse. Il fait
+     tout pour se dégager ou s’en éloigner. S’il est obligé d’être en contact physique ou à proximité et de manière prolongée 
+     avec l’objet de sa peur, il doit tirer un nouveau jet de Résistance Mentale pour éviter une dégradation immédiate de sa
+     psyché."""
+    },
+    
+    {"Phobie" :
+     """Le phobique prend tout le temps en considération la possibilité qu’il peut rencontrer son objet phobique ou la situation
+     source d’angoisse. Il se montre anxieux et il est difficile de le calmer. Toujours sur le qui-vive dès qu’une situation est 
+     jugée dangereuse, il refuse obstinément de se confronter à sa némésis. S’il y est contraint, cela déclenche une réaction
+     immédiate à sa crise.""",
+     "Crise" : """croyance délirante que la némésis du phobique est là, quelque part, tout près. Il fait tout pour s’éloigner des
+     lieux, quitte à se mettre en danger.""",
+     "Aptitude" : 
+         ("Connaissances de son objet de phobie", 2, """Le sujet obtient +2 impliquant les connaissances concernant son objet
+          phobique ou les actions pour s'en éloigner.""")
+    },
+  
+    {"Phobie" : 
+     """Le sujet est envahi par ses angoisses. Il se montre anxieux et apeuré en permanence, craignant d’être piégé dans une
+     situation où sa phobie le terrasserait.""",
+     "Crise" : """véritables hallucinations au cours desquelles le sujet est aux prises avec sa némésis.""",
+     "Aptitude" : 
+         ("Connaissances de son objet de phobie", 4, """Le sujet obtient +4 impliquant les connaissances concernant son objet
+          phobique ou les actions pour s'en éloigner.""")
+    }, 
+    "Raison", 
+    "Combativité") 
+          
+
+forteresse_vide = Desordre_mental(
+    "Forteresse Vide", 
+    None, 
+    None, 
+    
+    """À force d’affronter l’horreur et les traumatismes, l’esprit se replie et se rigidifie, pouvant aller jusqu’à se couper
+    complètement du monde extérieur. Mais derrière cette forteresse, se cache bien souvent un esprit dévasté qui n’est plus qu’une
+    coquille vide.""", 
+    
+    {"Emoussement" : 
+     """Le sujet a des phases de démotivation pendant lesquelles il ressent une grande fatigue, aussi bien intellectuelle que
+     physique. À d’autres moments, il apparaît sur le plan émotionnel peu réactif par rapport à ce qui se déroule autour de lui, 
+     même lorsque cela devrait déclencher des émotions chez un sujet équilibré.""",
+     "Aptitude" : 
+         ("Santé Mentale", 3, """Le sujet obtient +3 à tous ses jets de Santé Mentale""")
+    },
+    
+    {"Apathie" :
+     """Décrit comme froid et distant, le sujet devient de moins en moins sensible aux émotions. Sur un autre versant, il nie
+     complètement les traumas qu’il a subis ou ce qu’il a vu, prétendant que cela n’a jamais existé.""",
+     "Crise" : """prostration, insensibilité aux sollicitations extérieures et quasi incapacité de se mouvoir (défense possible si
+     attaqué).""",
+     "Aptitude" : 
+         ("Santé Mentale", 6, """Le sujet obtient +6 à tous ses jets de Santé Mentale""",
+          "Resiste aux tentatives de charme, persuation, etc", 3, """Le sujet est beaucoup moins sensible aux influences sociales, 
+          il bénéficie d'un bonus de 3 pour résister à toute tentative de charme, persuasion, etc.""")
+    },
+  
+    {"Forteresse Vide" : 
+     """Le sujet ne montre plus aucune émotion. De plus en plus apathique, il ne fait preuve ni de motivation ni d’enthousiasme, 
+     sans pour autant paraître triste à son entourage. Sa créativité est fortement émoussée. Passif, il a tendance à suivre les
+     autres.""",
+     "Crise" : """prostration totale pendant laquelle l’ esprit et le corps sont complètement fermés à toute sollicitation extérieure
+     (même si attaqué). Oubli de tout souvenir de ces épisodes de repli.""",
+     "Aptitude" : 
+         ("Santé Mentale", 9, """Le sujet obtient +9 à tous ses jets de Santé Mentale""",
+          "Resiste aux tentatives de charme, persuation, etc", 20, """Fermé, l'esprit du malade ne peut être possédé ni touché
+          par la manipulation, les charmes, les envoûtements, etc.""")
+    }, 
+    "Raison", 
+    "Créativité") 
                                                                                           
        
 
