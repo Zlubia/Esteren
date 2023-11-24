@@ -546,7 +546,9 @@ forteresse_vide = Desordre_mental(
     }, 
     "Raison", 
     "Créativité") 
-                                                                                          
-       
+   
+
+                                                                                       
+liste_desordres_mentaux = [mélancholie, paranoia, mimétisme, obsession, mysticisme, frénésie, hallucination, hystérie, confusion_mentale, exaltation, phobie, forteresse_vide] 
 
 

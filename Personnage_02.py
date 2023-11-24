@@ -8,7 +8,6 @@ Created on Tue Aug 22 14:48:34 2023
 from Donnees_Creation_Perso import *
 
 
-
 def print_voies_stats(self) :
     """
     Fonction utilitaire pour imprimer les statistiques des voies
@@ -879,7 +878,7 @@ class Player:
                     domaines_dispo = ["Milieu Naturel", "Perception" , "Prouesses", "Voyage"]
                     choix = True
                 
-                elif roture == "Artisan" or roture == "Artisan" or roture == "Ouvrier" or roture == "ouvrier" :
+                elif roture == "Artisan" or roture == "artisan" or roture == "Ouvrier" or roture == "ouvrier" :
                 
                     domaines_dispo = ["Artisanat", "Érudition" , "Science", "Relation"]
                     choix = True
@@ -1202,6 +1201,25 @@ class Player:
         
         "--------------choix de désordre mental-----------------------"
                 
+        print("\nLa jauge de santé mentale est subdivisée en quatre états possédants chacun cinq cases :")
+        print("Equilibré, Symptôme, Syndrome et folie.")
+        print("Selon la pathologie latente, ou désordre mental, du PJ, les effets de chaque état seront différents.")
+        
+        print("\nVoici les désordres mentaux parmis lesquels vous pouvez choisir.")
+        
+        choix_desordre_mental_disponibles = [phobie]
+        
+        for desordre in liste_desordres_mentaux :
+            
+            print(desordre.majeur)
+            
+            if self.voies[desordre.majeur] > 3 :
+                print("ça marche")
+                choix_desordre_mental_disponibles.append(desordre)
+        
+        print(choix_desordre_mental_disponibles)
+        
+        
         
         
 
@@ -1211,7 +1229,7 @@ class Player:
         
         
                 
-        
+    
                 
         
         
