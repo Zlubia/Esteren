@@ -524,6 +524,9 @@ class Player:
        self.trauma = (0, 0) #(Points de Trauma Permanents , Points de Trauma Temporaires)
        self.endurcissement = 0
        self.resistance_mentale = 0
+       self.desordre_mental = None
+       self.personnalite = ""
+       
                          
     
     
@@ -593,7 +596,7 @@ class Player:
         
        
     def creation(self):
-        
+         
         print("\n\n-----Création de personnage-----")
 
         """---------------------------------------------- 1 - CHOIX PEUPLE ------------------------------------------------"""
@@ -1205,19 +1208,103 @@ class Player:
         print("Equilibré, Symptôme, Syndrome et folie.")
         print("Selon la pathologie latente, ou désordre mental, du PJ, les effets de chaque état seront différents.")
         
-        print("\nVoici les désordres mentaux parmis lesquels vous pouvez choisir.")
         
         choix_desordre_mental_disponibles = [phobie]
         
         for desordre in liste_desordres_mentaux :
             
-            print(desordre.majeur)
+            desordre_majeur = desordre.majeur
+            desordre_mineur = desordre.mineur
+
+            #d'abord 2 exceptions, désordres qui possèdent 2 voies majeurs.
+            if desordre == mysticisme :
+                if self.voies["Idéal"] > 3 or self.voies["Empathie"] > 3 :
+                    choix_desordre_mental_disponibles.append(desordre)
+            elif desordre == hallucination :
+                if self.voies["Créativité"] > 3 or self.voies["Empathie"] > 3 :
+                    choix_desordre_mental_disponibles.append(desordre)
             
-            if self.voies[desordre.majeur] > 3 :
-                print("ça marche")
+            #suite du code normal
+            elif desordre_majeur == None:
+                pass
+            elif self.voies[desordre_majeur] > 3 :
+                choix_desordre_mental_disponibles.append(desordre)
+            
+            #desordres mineurs    
+            if desordre_mineur == None:
+                pass
+            elif self.voies[desordre_mineur] < 3 :
                 choix_desordre_mental_disponibles.append(desordre)
         
-        print(choix_desordre_mental_disponibles)
+        
+        desordre_choisi = False
+        
+        while desordre_choisi == False :
+        
+            print("\nVoici les désordres disponibles :\n")
+            noms_desordres_disponibles = []
+            for i in choix_desordre_mental_disponibles :
+                print(repr(i))
+                nom_desordre = i.name.lower()# set every character in lower case
+                nom_desordre = nom_desordre.replace(" ", "")# remove spaces
+                noms_desordres_disponibles.append(nom_desordre)
+            
+            
+            print("\nSi vous souhaitez lire la description d'un désordre encodez: description, nom du désordre")
+            print("Si vous avez choisi votre désordre encodez le nom du désordre choisi :")
+            choix = input()
+            
+            choix = choix.lower() # set every character in lower case
+            choix = choix.replace(" ", "") # remove spaces
+            choix = choix.split(",") # separate 
+            
+            if choix[0] == "description" :
+                description_affichee = False
+                for i in choix_desordre_mental_disponibles :
+                    nom_desordre = i.name.lower()# set every character in lower case
+                    nom_desordre = nom_desordre.replace(" ", "")# remove spaces
+                    
+                    if nom_desordre == choix[1] :
+                        print("")
+                        print(i.name, " : ")
+                        print(i.description)
+                        description_affichee = True
+                
+                if description_affichee == False :
+                    print("Erreur, ce désordre ne se trouve pas dans la liste.")
+                    
+            elif choix[0] in noms_desordres_disponibles :
+                
+                for i in choix_desordre_mental_disponibles :
+                    nom_desordre = i.name.lower()# set every character in lower case
+                    nom_desordre = nom_desordre.replace(" ", "")# remove spaces
+                    
+                    if choix[0] == nom_desordre :
+                        self.desordre_mental = i
+                        desordre_choisi = True
+            else :
+                print("\nErreur, veuillez choisir votre désordre.")
+        
+        print("\nVous avez choisi le désordre :", self.desordre_mental.name)
+        
+        
+        "--------------Personnalité-----------------------"
+        
+        print("\n---------------------------------------------------------")
+        print("\nVous devriez maintenant prendre le temps d'écrire quelques lignes résumant la personnalité de votre PJ.")
+        
+        self.personnalite = str(input("\nDécrivez la personnalité de votre PJ :"))
+        
+        print("\nVoici la personnalité de votre PJ :", self.personnalite)
+        
+        
+        
+        """--------------------------------- 6 - Points d'Expérience, Avantages et Désavantages ----------------------------"""
+            
+                
+        print("\n---------------------------------------------------------")
+        print("\nChaque personnage dispose de 100 points d'Expérience lui permettant d'améliorer certaines compétences et/ou d'acquérir des Avantages.")
+        
         
         
         
